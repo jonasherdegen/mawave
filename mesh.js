@@ -1,55 +1,22 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-  // Set the scene size.
-  const WIDTH = window.innerWidth,
-  HEIGHT = window.innerHeight;
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
+      camera.position.z = 1;
 
-  // Set camera attributes.
-  const VIEW_ANGLE = 45,
-  ASPECT = WIDTH / HEIGHT,
-  NEAR = 0.1,
-  FAR = 10000;
+      const scene = new THREE.Scene();
 
-  // Get the WebGL holder.
-  const container = document.querySelector('#WebGL-output');
+      const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+      const material = new THREE.MeshNormalMaterial();
 
-  // Create WebGL renderer, camera, scene and light.
-  const renderer = new THREE.WebGLRenderer({antialias: true}); // Antialiasing for smoother edges
-  renderer.setClearColor("#000000"); // Set background color
-  const camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
-  const scene = new THREE.Scene();
-  scene.add(camera);
+      const mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
 
-  // Add colored point light.
-  const pointLight = new THREE.PointLight(0xFF0040, 2, 50); // Pink light
-  pointLight.position.set(10, 10, 10);
-  scene.add(pointLight);
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setAnimationLoop(animation);
+      document.body.appendChild(renderer.domElement);
 
-  // Create colored cube.
-  const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
-  const cubeMaterial = new THREE.MeshLambertMaterial({ color: Math.random() * 0xFFFFFF });
-  const cube = new THREE.Mesh( cubeGeometry, cubeMaterial);
-  cube.position.set(0, 0, 0);
-  scene.add(cube);
+      function animation(time) {
+        mesh.rotation.x = time / 2000;
+        mesh.rotation.y = time / 1000;
 
-  // Set renderer size and append to the container.
-  renderer.setSize(WIDTH, HEIGHT);
-  container.appendChild(renderer.domElement);
-
-  camera.position.z = 5;
-
-  // Function to update each frame.
-  function update () {
-    // Rotate cube
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-
-    // Render scene with camera
-    renderer.render(scene, camera);
-
-    // Continue animation loop
-    requestAnimationFrame(update);
-  }
-
-  // Schedule the first frame.
-  requestAnimationFrame(update);
-});
+        renderer.render(scene, camera);
+      }
