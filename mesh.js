@@ -1,36 +1,62 @@
-const canvas = document.createElement('canvas');
-const context = canvas.getContext('2d');
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Set the scene size.
+  const WIDTH = window.innerWidth,
+  HEIGHT = window.innerHeight;
 
-// Use canvas to draw text here.
+  // Set camera attributes.
+  const VIEW_ANGLE = 45,
+  ASPECT = WIDTH / HEIGHT,
+  NEAR = 0.1,
+  FAR = 10000;
 
-const texture = new THREE.Texture(canvas);
-texture.needsUpdate = true;
+  // Get the WebGL holder.
+  const container = document.querySelector('#WebGL-output');
 
+  // Create WebGL renderer, camera and a scene.
+  const renderer = new THREE.WebGLRenderer();
+  const camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+  const scene = new THREE.Scene();
 
+  // Add the camera to the scene.
+  scene.add(camera);
 
-const geometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight, 32, 32); // The last two parameters decide the detail level of your mesh.
+  // Start the renderer.
+  renderer.setSize(WIDTH, HEIGHT);
 
+  // Attach the renderer-supplied DOM element.
+  container.appendChild(renderer.domElement);
 
+  // create a point light
+  const pointLight = new THREE.PointLight(0xFFFFFF);
 
-const material = new THREE.MeshPhongMaterial({
-  map: texture,
-  side: THREE.DoubleSide,
-  transparent: true
-});
+  // set its position
+  pointLight.position.x = 10;
+  pointLight.position.y = 50;
+  pointLight.position.z = 130;
 
-const plane = new THREE.Mesh(geometry, material);
+  // add to the scene
+  scene.add(pointLight);
 
+  // Create a cube with width, height and depth set to 1,
+  // and set its material to be a mesh of lambert's type, with color white.
+  const cube = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshLambertMaterial({color: 0xFFFFFF})
+  );
 
+  scene.add(cube);
 
-window.addEventListener('mousemove', (event) => {
-  const x = (event.clientX / window.innerWidth) * 2 - 1;
-  const y = -(event.clientY / window.innerHeight) * 2 + 1;
-  const vector = new THREE.Vector3(x, y, 0.5);
-  vector.unproject(camera);
-  const dir = vector.sub(camera.position).normalize();
-  const distance = -camera.position.z / dir.z;
-  const pos = camera.position.clone().add(dir.multiplyScalar(distance));
-  
-  // Update the geometry positions here.
-  plane.geometry.verticesNeedUpdate = true;
+  function update () {
+    // draw scene
+    renderer.render(scene, camera);
+
+    // rotate the cube each frame
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+
+    requestAnimationFrame(update);
+  }
+
+  // schedule the first frame.
+  requestAnimationFrame(update);
 });
