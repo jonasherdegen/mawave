@@ -1,0 +1,385 @@
+/* COLOR STYLES */
+
+/**%#**/
+/* btn and link mode transitions */
+[btn-mode], [class*="bm0"],
+[link-mode], [class*="lm0"] {
+	transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+/* applies default border width to cards, elements, and buttons */
+[card-mode]:not([card-mode=""]), [class*="cm0"],
+[element-mode]:not([element-mode=""]), [class*="em0"],
+[btn-mode]:not([btn-mode=""]), [class*="bm0"] {
+	--border-width: var(--bw1);
+}
+/**#%**/
+
+/* global swatches */
+html {
+  --dark-1: 18, 18, 18;
+  --dark-2: 38, 38, 38;
+	--light-1: 255, 255, 255;
+  --light-2: 246, 246, 246;
+  --power: 0, 213, 234;
+  --purpose: 229, 255, 66;
+  --dark-purple: 91, 71, 231;
+  --light-purple: 190, 148, 255;
+  --deep-blue: 22, 32, 56;
+  --determined: 8, 30, 83;
+	--alt-selection-bg: rgba(var(--power), 1);
+	--alt-selection-fc: rgba(var(--dark-2), 1);
+}
+
+/* section mode 1 (light mode) */
+body, [section-mode="1"], [class*="sm0-1"],
+/* styles card mode 2 when inside section mode 2 */
+:is([section-mode="2"], [class*="sm0-2"]) :is([card-mode="2"], [class*="cm0-2"]) {
+	/* section mode 1 */
+	--m-bg1: rgba(var(--light-1), 1);
+  --m-bg2: rgba(var(--light-2), 1);
+  --m-bg3: rgba(var(--power), 1);
+  --m-bg4: rgba(var(--purpose), 1);
+  --m-bg5: rgba(var(--dark-1), 1);
+  --m-bg6: rgba(var(--dark-2), 1);
+	--m-fc1: rgba(var(--dark-2), 1);
+	--m-fc2: rgba(var(--dark-1), 1);
+  --m-fc3: rgba(var(--power), 1);
+  --m-fc4: rgba(var(--purpose), 1);
+	--m-bc1: rgba(var(--dark-1), 0.5);
+	--m-sc1: rgba(var(--dark-1), 1);
+	/* element mode 1 (tag) */
+  --em1-bg1: rgba(var(--dark-2), 1);
+  --em1-bg2: rgba(var(--light-2), 1);
+  --em1-bg3: rgba(var(--power), 1);
+  --em1-bg4: rgba(var(--purpose), 1);
+  --em1-bg5: rgba(var(--deep-blue), 1);
+  --em1-bg6: rgba(var(--light-1), 1);
+  --em1-bg1b: rgba(var(--dark-2), .5);
+  --em1-bg1s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+  --em1-bg2b: rgba(var(--dark-2), .5);
+  --em1-bg2s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+  --em1-bg3b: rgba(var(--dark-2), .5);
+  --em1-bg3s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+  --em1-fc1: rgba(var(--light-2), 1);
+  --em1-fc2: rgba(var(--dark-2), 1);
+  --em1-bc1: rgba(var(--dark-2), .5);
+  /* element mode 2 (tag) */
+  --em2-bg1: transparent;
+  --em2-bg1b: rgba(var(--dark-2), .5);
+  --em2-bg1s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+  --em2-bg1i: linear-gradient(to top right, rgba(var(--dark-purple), 1), rgba(var(--light-purple), 1));
+  --em2-fc1: rgba(var(--light-1), 1);
+  --em2-bc1: rgba(var(--dark-2), 0.5);
+ 	/* element mode 3 (tag) */
+  --em3-bg1: transparent;
+  --em3-bg1i: linear-gradient(to right, rgba(var(--light-1), 1) 0%, rgba(var(--light-1), 1) 25%, rgba(var(--light-1), 0) 100%);
+  --em3-fc1: rgba(var(--dark-1), 1);
+  --em3-bg2: transparent;
+  --em3-bg2i: linear-gradient(to right, rgba(var(--light-2), 1) 0%, rgba(var(--light-2), 1) 25%, rgba(var(--light-2), 0) 100%);
+ 	/* element mode 4 (tag) */
+  --em4-bg1: transparent;
+  --em4-bg1i: linear-gradient(to left, rgba(var(--light-1), 1) 0%, rgba(var(--light-1), 1) 25%, rgba(var(--light-1), 0) 100%);
+  --em4-fc1: rgba(var(--light-1), 1);
+  --em4-bg2: transparent;
+  --em4-bg2i: linear-gradient(to left, rgba(var(--light-2), 1) 0%, rgba(var(--light-2), 1) 25%, rgba(var(--light-2), 0) 100%);
+  /* element mode 5 (tag) */
+  --em5-bg1: transparent;
+  --em5-bg1i: linear-gradient(to bottom, rgba(var(--light-1), 1) 0%, rgba(var(--light-1), 1) 25%, rgba(var(--light-1), 0) 100%);
+  --em5-fc1: rgba(var(--light-1), 1);
+  --em5-bg2: transparent;
+  --em5-bg2i: linear-gradient(to bottom, rgba(var(--light-2), 1) 0%, rgba(var(--light-2), 1) 25%, rgba(var(--light-2), 0) 100%);
+  /* element mode 6 (tag) */
+  --em6-bg1: transparent;
+  --em6-bg1i: linear-gradient(to top, rgba(var(--light-1), 1) 0%, rgba(var(--light-1), 1) 25%, rgba(var(--light-1), 0) 100%);
+  --em6-fc1: rgba(var(--light-1), 1);
+  --em6-bg2: transparent;
+  --em6-bg2i: linear-gradient(to top, rgba(var(--light-2), 1) 0%, rgba(var(--light-2), 1) 25%, rgba(var(--light-2), 0) 100%);
+ /* btn mode 1 (primary) */
+  --bm1-bg1: rgba(var(--power), .75);
+  --bm1-bg1b: rgba(var(--dark-2), .5);
+  --bm1-bg1s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+	--bm1-fc1: rgba(var(--dark-2), 1);
+  --bm1-bg1-hover: rgba(var(--power), 1);
+  --bm1-bg1b-hover: rgba(var(--dark-2), 1);
+	--bm1-fc1-hover: rgba(var(--dark-1), 1);
+  /* btn mode 2 (secondary) */
+  --bm2-bg1b: rgba(var(--dark-2), 1);
+	--bm2-fc1: rgba(var(--dark-2), 1);
+  --bm2-bg1-hover: rgba(var(--power), 1);
+  /* link mode 1 (tab link) */
+	--lm1-fc1: rgba(var(--dark-1), .5);
+	--lm1-fc1-hover: rgba(var(--dark-1), 1);
+  --lm1-bg1b-active: rgba(var(--dark-1), 1);
+	--lm1-fc1-active: rgba(var(--dark-1), 1);
+}
+
+/* section mode 2 (dark mode) */
+[section-mode="2"], [class*="sm0-2"],
+/* card mode 2 */
+[card-mode="2"], [class*="cm0-2"],
+/* styles card mode 2 when inside section mode 1 */
+:is([section-mode="1"], [class*="sm0-1"]) :is([card-mode="2"], [class*="cm0-2"]) {
+	/* section mode 2 */
+	--m-bg1: rgba(var(--dark-1), 1);
+  --m-bg2: rgba(var(--dark-2), 1);
+  --m-bg3: rgba(var(--power), 1);
+  --m-bg4: rgba(var(--purpose), 1);
+  --m-bg5: rgba(var(--light-1), 1);
+  --m-bg6: rgba(var(--light-2), 1);
+	--m-fc1: rgba(var(--light-2), 1);
+	--m-fc2: rgba(var(--light-1), 1);
+  --m-fc3: rgba(var(--power), 1);
+  --m-fc4: rgba(var(--purpose), 1);
+	--m-bc1: rgba(var(--light-1), 0.5);
+	--m-sc1: rgba(var(--light-1), 1);
+	/* element mode 1 (tag) */
+  --em1-bg1: rgba(var(--light-2), 1);
+  --em1-bg2: rgba(var(--dark-2), 1);
+  --em1-bg3: rgba(var(--power), 1);
+  --em1-bg4: rgba(var(--purpose), 1);
+  --em1-bg5: rgba(var(--deep-blue), 1);
+  --em1-bg6: rgba(var(--dark-1), 1);
+  --em1-bg1b: rgba(var(--light-2), .5);
+  --em1-bg1s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+  --em1-bg2b: rgba(var(--light-2), .5);
+  --em1-bg2s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+  --em1-bg3b: rgba(var(--light-2), .5);
+  --em1-bg3s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+  --em1-fc1: rgba(var(--dark-2), 1);
+  --em1-fc2: rgba(var(--light-2), 1);
+  --em1-bc1: rgba(var(--light-2), .5);
+ 	/* element mode 2 (tag) */
+  --em2-bg1: transparent;
+  --em2-bg1b: rgba(var(--dark-2), .5);
+  --em2-bg1s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+  --em2-bg1i: linear-gradient(to top right, rgba(var(--dark-purple), 1), rgba(var(--light-purple), 1));
+  --em2-fc1: rgba(var(--light-1), 1);
+  --em2-bc1: rgba(var(--dark-2), 0.5);
+ 	/* element mode 3 (tag) */
+  --em3-bg1: transparent;
+  --em3-bg1i: linear-gradient(to right, rgba(var(--dark-1), 1) 0%, rgba(var(--dark-1), 1) 25%, rgba(var(--dark-1), 0) 100%);
+  --em3-fc1: rgba(var(--light-1), 1);
+  --em3-bg2: transparent;
+  --em3-bg2i: linear-gradient(to right, rgba(var(--dark-2), 1) 0%, rgba(var(--dark-2), 1) 25%, rgba(var(--dark-2), 0) 100%);
+ 	/* element mode 4 (tag) */
+  --em4-bg1: transparent;
+  --em4-bg1i: linear-gradient(to left, rgba(var(--dark-1), 1) 0%, rgba(var(--dark-1), 1) 25%, rgba(var(--dark-1), 0) 100%);
+  --em4-fc1: rgba(var(--light-1), 1);
+  --em4-bg2: transparent;
+  --em4-bg2i: linear-gradient(to left, rgba(var(--dark-2), 1) 0%, rgba(var(--dark-2), 1) 25%, rgba(var(--dark-2), 0) 100%);
+ 	/* element mode 5 (tag) */
+  --em5-bg1: transparent;
+  --em5-bg1i: linear-gradient(to bottom, rgba(var(--dark-1), 1) 0%, rgba(var(--dark-1), 1) 25%, rgba(var(--dark-1), 0) 100%);
+  --em5-fc1: rgba(var(--light-1), 1);
+  --em5-bg2: transparent;
+  --em5-bg2i: linear-gradient(to bottom, rgba(var(--dark-2), 1) 0%, rgba(var(--dark-2), 1) 25%, rgba(var(--dark-2), 0) 100%);
+ 	/* element mode 6 (tag) */
+  --em6-bg1: transparent;
+  --em6-bg1i: linear-gradient(to top, rgba(var(--dark-1), 1) 0%, rgba(var(--dark-1), 1) 25%, rgba(var(--dark-1), 0) 100%);
+  --em6-fc1: rgba(var(--light-1), 1);
+  --em6-bg2: transparent;
+  --em6-bg2i: linear-gradient(to top, rgba(var(--dark-2), 1) 0%, rgba(var(--dark-2), 1) 25%, rgba(var(--dark-2), 0) 100%);
+  /* btn mode 1 (primary) */
+  --bm1-bg1: rgba(var(--power), .75);
+  --bm1-bg1b: rgba(var(--dark-2), .5);
+  --bm1-bg1s: 0px 2px 2px 0px rgba(var(--dark-1), 0.1), 0px 8px 20px -12px rgba(var(--dark-1), 0.2);
+	--bm1-fc1: rgba(var(--dark-2), 1);
+  --bm1-bg1-hover: rgba(var(--power), 1);
+  --bm1-bg1b-hover: rgba(var(--dark-2), 1);
+	--bm1-fc1-hover: rgba(var(--dark-1), 1);
+  /* btn mode 2 (secondary) */
+  --bm2-bg1b: rgba(var(--light-2), 1);
+	--bm2-fc1: rgba(var(--light-2), 1);
+	--bm2-fc1-hover: rgba(var(--dark-2), 1);
+  --bm2-bg1-hover: rgba(var(--power), 1);
+  /* link mode 1 (tab link) */
+	--lm1-fc1: rgba(var(--light-1), .5);
+	--lm1-fc1-hover: rgba(var(--light-1), 1);
+  --lm1-bg1b-active: rgba(var(--light-1), 1);
+	--lm1-fc1-active: rgba(var(--light-1), 1);
+}
+
+/* card mode 1 when inside section mode 2 */
+:is([section-mode="2"], [class*="sm0-2"]) :is([card-mode="1"], [class*="cm0-1"]) {
+	--m-bg1: rgba(var(--light-2), 1);
+  --m-bg2: rgba(var(--light-1), 1);
+  --m-bg3: rgba(var(--power), 1);
+  --m-bg4: rgba(var(--purpose), 1);
+  --m-bg1b: rgba(var(--dark-1), .5);
+  --m-fc1: rgba(var(--dark-2), 1);
+	--m-fc2: rgba(var(--dark-1), 1);
+	--m-bc1: rgba(var(--light-2), 1);
+	--m-sc1: rgba(var(--light-1), 1);
+}
+/* card mode 1 default style */
+:is([card-mode="1"], [class*="cm0-1"]),
+/* card mode 1 when inside section mode 1 */
+:is([section-mode="1"], [class*="sm0-1"]) :is([card-mode="1"], [class*="cm0-1"]) {
+	--m-bg1: rgba(var(--dark-2), 1);
+  --m-bg2: rgba(var(--dark-1), 1);
+  --m-bg3: rgba(var(--power), 1);
+  --m-bg4: rgba(var(--purpose), 1);
+  --m-bg1b: rgba(var(--dark-1), .5);
+  --m-fc1: rgba(var(--light-2), 1);
+	--m-fc2: rgba(var(--light-1), 1);
+	--m-bc1: rgba(var(--dark-2), 1);
+	--m-sc1: rgba(var(--dark-1), 1);
+}
+
+
+
+/**%{{element mode: tag}**/
+[element-mode="1"], [class*="em0-1"] {
+	--m-bg1: var(--em1-bg1);
+  --m-bg2: var(--em1-bg2);
+  --m-bg3: var(--em1-bg3);
+  --m-bg4: var(--em1-bg4);
+  --m-bg5: var(--em1-bg5);
+  --m-bg6: var(--em1-bg6);
+	--m-bg1b: var(--em1-bg1b);
+	--m-bg1s: var(--em1-bg1s);
+	--m-bg2b: var(--em1-bg2b);
+	--m-bg2s: var(--em1-bg2s);
+	--m-bg3b: var(--em1-bg3b);
+	--m-bg3s: var(--em1-bg3s);
+	--m-fc1: var(--em1-fc1);
+  --m-fc2: var(--em1-fc2);
+	--m-bc1: var(--em1-bc1);
+} /**}%**/
+
+/**%{{element mode: tag}**/
+[element-mode="2"], [class*="em0-2"] {
+	--m-bg1: var(--em2-bg1);
+	--m-bg1b: var(--em2-bg1b);
+	--m-bg1s: var(--em2-bg1s);
+  --m-bg1i: var(--em2-bg1i);
+	--m-fc1: var(--em2-fc1);
+	--m-bc1: var(--em2-bc1);
+} /**}%**/
+
+/**%{{element mode: tag}**/
+[element-mode="3"], [class*="em0-3"] {
+	--m-bg1: var(--em3-bg1);
+  --m-bg1i: var(--em3-bg1i);
+  --m-bg2: var(--em3-bg2);
+  --m-bg2i: var(--em3-bg2i);
+	--m-fc1: var(--em3-fc1);
+} /**}%**/
+
+/**%{{element mode: tag}**/
+[element-mode="4"], [class*="em0-4"] {
+	--m-bg1: var(--em4-bg1);
+  --m-bg1i: var(--em4-bg1i);
+  --m-bg2: var(--em4-bg2);
+  --m-bg2i: var(--em4-bg2i);
+	--m-fc1: var(--em4-fc1);
+} /**}%**/
+
+/**%{{element mode: tag}**/
+[element-mode="5"], [class*="em0-5"] {
+	--m-bg1: var(--em5-bg1);
+  --m-bg1i: var(--em5-bg1i);
+  --m-bg2: var(--em5-bg2);
+  --m-bg2i: var(--em5-bg2i);
+	--m-fc1: var(--em5-fc1);
+} /**}%**/
+
+/**%{{element mode: tag}**/
+[element-mode="6"], [class*="em0-6"] {
+	--m-bg1: var(--em6-bg1);
+  --m-bg1i: var(--em6-bg1i);
+  --m-bg2: var(--em6-bg2);
+  --m-bg2i: var(--em6-bg2i);
+	--m-fc1: var(--em6-fc1);
+} /**}%**/
+
+/**%{{btn mode: 1}**/
+[btn-mode="1"], [class*="bm0-1"] {
+	--m-bg1: var(--bm1-bg1);
+  --m-bg1b: var(--bm1-bg1b);
+  --m-bg1s: var(--bm1-fg1s);
+  --m-fc1: var(--bm1-fc1);
+  --m-bg1-hover: var(--bm1-bg1-hover);
+	--m-bg1b-hover: var(--bm1-bg1b-hover);
+	--m-fc1-hover: var(--bm1-fc1-hover);
+} /**}%**/
+
+/**%{{btn mode: 2}**/
+[btn-mode="2"], [class*="bm0-2"] {
+	--m-bg1b: var(--bm2-bg1b);
+	--m-fc1: var(--bm2-fc1);
+  --m-fc1-hover: var (--bm2-fc1-hover);
+  --m-bg1-hover: var(--bm2-bg1-hover);
+} /**}%**/
+
+/**%{{link mode: nav}**/
+[link-mode="1"], [class*="lm0-1"] {
+	--m-fc1: var(--lm1-fc1);
+	--m-fc1-hover: var(--lm1-fc1-hover);
+	--m-bg1b-active: var(--lm1-bg1b-active);
+	--m-fc1-active: var(--lm1-fc1-active);
+} /**}%**/
+
+/* backgrounds */
+[class*="bg0"] { background-color: transparent; }
+[class*="bg0-1"] { background-color: currentColor; }
+[class*="bg1"] { 
+	background-color: var(--bg1);
+	background-image: var(--bg1i);
+  border-color: var(--bg1b);
+	box-shadow: var(--bg1s);
+}
+[class*="bg2"] {
+	background-color: var(--bg2);
+  background-image: var(--bg2i);
+  border-color: var(--bg2b);
+  box-shadow: var(--bg2s);
+}
+[class*="bg3"] {
+	background-color: var(--bg3);
+  background-image: var(--bg3i);
+  border-color: var(--bg3b);
+  box-shadow: var(--bg3s);
+}
+[class*="bg4"] {
+	background-color: var(--bg4);
+  background-image: var(--bg4i);
+  border-color: var(--bg4b);
+  box-shadow: var(--bg4s);
+}
+[class*="bg5"] {
+	background-color: var(--bg5);
+  background-image: var(--bg5i);
+  border-color: var(--bg5b);
+  box-shadow: var(--bg5s);
+}
+[class*="bg6"] {
+	background-color: var(--bg6);
+  background-image: var(--bg6i);
+  border-color: var(--bg6b);
+  box-shadow: var(--bg6s);
+}
+
+/* font colors */
+[class*="fc0"] { color: transparent; }
+[class*="fc0-1"] { color: currentColor; }
+[class*="fc0-2"] { color: inherit; }
+[class*="fc1"] { color: var(--fc1); }
+[class*="fc2"] { color: var(--fc2); }
+[class*="fc3"] { color: var(--fc3); }
+[class*="fc4"] { color: var(--fc4); }
+[class*="fc5"] { color: var(--fc5); }
+[class*="fc6"] { color: var(--fc6); }
+/* border colors */
+[class*="bc0"] { border-color: transparent; }
+[class*="bc0-1"] { border-color: currentColor; }
+[class*="bc0-2"] { border-color: inherit; }
+[class*="bc1"] { border-color: var(--bc1); }
+[class*="bc2"] { border-color: var(--bc2); }
+/* text stroke colors */
+[class*="sc0"] { -webkit-text-stroke-color: transparent; }
+[class*="sc0-1"] { -webkit-text-stroke-color: currentColor; }
+[class*="sc0-2"] { -webkit-text-stroke-color: inherit; }
+[class*="sc1"] { -webkit-text-stroke-color: var(--sc1); }
